@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="game-details-container">
+    <!-- header -->
+    {% include 'partials/_navbar.html' %}
+    <!-- header end -->
+    <!--Single-Game-detail content -->
+      <div class="medium-container">
+        <div class="game-row-grid">
+          <div class="game-col-2">
+            <img
+              src="{{ game.photo_main.url }}"
+              width="80%"
+              id="ProductImg"
+            />
+
+            <div class="small-img-row">
+              {% if game.photo_1 %}
+                <div class="small-img-col">
+                  <img
+                    src="{{ game.photo_1.url }}"
+                    class="small-img"
+                  />
+                </div>
+              {% endif %}
+              {% if game.photo_2 %}
+                <div class="small-img-col">
+                  <img
+                    src="{{ game.photo_2.url }}"
+                    class="small-img"
+                  />
+                </div>
+              {% endif %}
+              {% if game.photo_3 %}
+                <div class="small-img-col">
+                  <img
+                    src="{{ game.photo_3.url }}"
+                    class="small-img"
+                  />
+                </div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="details-container">
+            <p><a href="{% url 'index' %}"><i class="fas fa-arrow-left"></i> Home</a> / Game</p>
+            <h1>{{ game.gameTitle }}</h1>
+
+            <div class="game-description list-order">
+              <img
+                src="{{ game.photo_main.url }}"
+                class="game-description-image"
+              />
+              <p style="text-align: justify">
+                {{ game.mainDescription | safe  }}
+              </p>
+            </div>
+            <br />
+            <div class="game-requirements">
+              {% if game.photo_1 %}
+                <img
+                  src="{{ game.photo_1.url }}"
+                  class="game-description-image"
+                />
+              {% endif %}
+              <h2>System Requirements of {{ game.gameTitle }}</h2>
+              <p style="text-align: justify">
+                Before you start {{ game.gameTitle }} make
+                sure your PC meets minimum system requirements.
+              </p>
+              <br />
+              Minimum:
+              <div class="list-order">
+                {{ game.minimumRequirement | safe }}
+              </div>
+              <br />
+              Recommended:
+              <div class="list-order">
+                {{ game.recommendedRequirement | safe }}
+              </div>
+            </div>
+            {% if game.photo_2 %}
+                <img
+                  src="{{ game.photo_2.url }}"
+                  class="game-description-image"
+                />
+              {% endif %}
+          </div>
+        </div>
+      </div>
+      <!--Single-Game-detail content end-->
+</div>
+{% endblock %}

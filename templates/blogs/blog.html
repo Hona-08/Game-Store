@@ -1,0 +1,148 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="blog-background" style="color: #fff">
+  <!-- include headers -->
+  {% include 'partials/_navbar.html' %}
+  <!-- headers end -->
+  <!-- individual blog section -->
+  <div class="small-container">
+    <a href="{% url 'blogs' %}">
+      <button class="submit-btn">
+        Back
+      </button>
+    </a>
+
+    <!-- message component -->
+    {% include 'partials/_alerts.html' %}
+    <!-- message component end -->
+
+    {% if blog %}
+      <div class="single-blog single-blog-detail" style="margin-bottom: 50px">
+        <p class="blog-meta">By {{ blog.user_name }} <span>{{ blog.published_date }}</span></p>
+        <img src="{{ blog.blogImage.url }}" />
+        <h2>{{ blog.blogTitle }}</h2>
+        <p class="blog-text">
+          {{ blog.blogDescription | safe }}
+        </p>
+      </div>
+    {% else %}
+      <p>No Blogs</p>
+    {% endif %}
+    
+    <div class="custome-reviews">
+      <div class="reviews-output">
+        <h1>Reviews</h1>
+        {% if reviews %}
+          {% for review in reviews %}
+            <div class="reviews-box">
+              <h4>{{ review.user_name }}</h4>
+              <div class="rating">
+                <i
+                style="color: mediumturquoise;"
+                class="
+                {% if review.rating >= 1 %}
+                  fa fa-star
+                {% elif review.rating >= 0.5 %}
+                  fas fa-star-half-alt
+                {% else %}
+                  far fa-star
+                {% endif %}
+                "
+                >
+                </i>
+                <i 
+                style="color: mediumturquoise;"
+                class="
+                {% if review.rating >= 2 %}
+                  fa fa-star
+                {% elif review.rating >= 1.5 %}
+                  fas fa-star-half-alt
+                {% else %}
+                  far fa-star
+                {% endif %}
+                "
+                ></i>
+                <i
+                style="color: mediumturquoise;"
+                class="
+                {% if review.rating >= 3 %}
+                  fa fa-star
+                {% elif review.rating >= 2.5 %}
+                  fas fa-star-half-alt
+                {% else %}
+                  far fa-star
+                {% endif %}
+                "
+                ></i>
+                <i 
+                style="color: mediumturquoise;"
+                class="
+                {% if review.rating >= 4 %}
+                  fa fa-star
+                {% elif review.rating >= 3.5 %}
+                  fas fa-star-half-alt
+                {% else %}
+                  far fa-star
+                {% endif %}
+                "
+                ></i>
+                <i 
+                style="color: mediumturquoise;"
+                class="
+                {% if review.rating >= 5 %}
+                  fa fa-star
+                {% elif review.rating >= 4.5 %}
+                  fas fa-star-half-alt
+                {% else %}
+                  far fa-star
+                {% endif %}
+                "
+                ></i>
+              </div>
+              <p class="date">{{ review.created_at }}</p>
+              <p class="comments">
+                {{ review.comments }}
+              </p>
+            </div>
+          {% endfor %}
+        {% else %}
+          <p>No Review To show</p>
+        {% endif %}
+
+      </div>
+    </div>
+    <div class="write-custome-reviews">
+      <h1>Write a Custome Reviews</h1>
+      {% if user.is_authenticated %}
+        <div class="rating-form">
+          <p>Rating</p>
+          <form action="{% url 'createReview' blog.id %}" method="POST">
+          {% csrf_token %}
+            {% if user.is_authenticated %}
+              <input type="hidden" name="user_id" value="{{ user.id }}" >
+              <input type="hidden" name="user_name" value="{{ user.username }}" >
+            {% endif %}
+            <input type="hidden" name="blog_id" value="{{ blog.id }}" >
+            <select name="rating" id="rating">
+              <option value="rating">Select...</option>
+              <option value="1">1-Poor</option>
+              <option value="2">2-Fair</option>
+              <option value="3">3-Good</option>
+              <option value="4">3-Very Good</option>
+              <option value="5">3-Excellent</option>
+            </select>
+            <div class="comment-form">
+              <p>Comment</p>
+              <textarea id="comment" name="comments" rows="4" cols="50"></textarea>
+            </div>
+
+            <input type="submit" class="submit-btn" value="Submit" />
+          </form>
+        </div>
+      {% else %}
+        <p><a href="{% url 'account' %}" style="color:#1000ff">SignIn</a> to write a Review</p>
+      {% endif %}
+    </div>
+  </div>
+  <!-- Blog section end -->
+</div>
+{% endblock %}

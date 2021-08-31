@@ -1,0 +1,100 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block content %}
+<div class="product-item">
+  {% include 'partials/_navbar.html' %}
+  <!-- Game content -->
+  <div class="game-container">
+    <div class="small-container">
+      <div class="games-head">
+        <h2>All Games</h2>
+        <form action="{% url 'search' %}" class="search-form">
+          <input type="text" name="keywords">
+          <input type="submit" value="Search">
+        </form>
+      </div>
+      <div class="grid-4">
+        {% if games %} {% for game in games %}
+        <div class="col-4">
+          <div class="box">
+            <div class="box-image">
+              <a href="{% url 'game' game.id %}"
+                ><img class="game-image" src="{{ game.photo_icon_small.url }}"
+              /></a>
+              <ul class="icon">
+                  <li>
+                    <div>
+                      <span>
+                        <i class="fas fa-search"></i>
+                      </span>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="add-to-cart-btn">
+                      <span>
+                        <i class="fas fa-shopping-bag"></i>
+                      </span>
+                    </div>
+                  </li>
+                  <li>
+                    <div>
+                      <span>
+                        <i class="far fa-heart"></i>
+                      </span>
+                    </div>
+                  </li>
+                </ul>
+            </div>
+            <a href="{% url 'game' game.id %}">
+              <h4 class="game-title">{{ game.gameTitle }}</h4></a>
+            <div class="rating">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+            </div>
+            <div class="price">Rs. {{ game.price }}</div>
+            <a href="{% url 'game' game.id %}" class="cart-btn">Read More</a>
+          </div>
+        </div>
+        {% endfor %} {% else %}
+        <p>No Listing Availavle</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <!-- Game content end -->
+  <!-- pagination button -->
+  <div class="small-container">
+    <div class="page-btn">
+      {% if games.has_other_pages %}
+        {% if games.has_previous %}
+          <span><a href="?page={{games.previous_page_number}}">&#8592;</a></span>
+        {% else %}
+          <span class="page-disabled">&#8592;</span>
+        {% endif %}
+        {% for i in games.paginator.page_range %}
+          {% if games.number == i %}
+            <span class="active"><a>{{i}}</a></span>
+          {% else %}
+            <span><a href="?page={{i}}">{{i}}</a></span>
+          {% endif %}
+        {% endfor %}
+        {% if games.has_next %}
+          <span><a href="?page={{games.next_page_number}}">&#8594;</a></span>
+        {% else %}
+          <span class="page-disabled">&#8594;</span>
+        {% endif %}
+      {% endif %}
+      <!-- <span>&#8592;</span>
+      <span><a href="#">1</a></span>
+      <span>2</span>
+      <span>3</span>
+      <span>4</span>
+      <span>&#8594;</span> -->
+    </div>
+  </div>
+  <!-- pagination button end -->
+</div>
+{% endblock %}

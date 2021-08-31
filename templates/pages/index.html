@@ -1,0 +1,219 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% load humanize %}
+{% block content %}
+
+<div class="showcase">
+    <!-- header -->
+    {% include 'partials/_navbar.html' %}
+    <!-- header end -->
+  <!-- showcase -->
+  <div class="showcase-content">
+    <div class="row-flex">
+      <div class="col-2">
+        <div class="text-center-sm">
+          <h1>Explore <br />Games for gamers</h1>
+          <p>Adding Fun to your Life</p>
+          <a href="{% url 'games' %}" class="btn">Explore Now &#8594;</a>
+        </div>
+      </div>
+      <div class="col-2">
+        <div class="trending-post">
+          <div class="trending-content">
+            <h2>TRENDING GAMES</h2>
+            {% if trending_game %}
+              {% for trendingGame in trending_game %}
+                <div class="trending-item">
+                  <div class="trending-box">
+                    <div class="post-image">
+                      <a href="{% url 'game' trendingGame.id %}">
+                        <img src="{{ trendingGame.photo_icon_small.url }}" alt="" />
+                      </a>
+                    </div>
+                    <div class="item-content">
+                      <h6>
+                        <a href="{% url 'game' trendingGame.id %}">
+                          {{ trendingGame.mainDescription | safe | truncatewords_html:6 }}
+                        </a>
+                      </h6>
+                      <ul>
+                        <li><i class="far fa-clock"></i> {{ trendingGame.created_at }}</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            {% else %}
+              <p>No Trending Game Availavle</p>
+            {% endif %}
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- showcase end -->
+<!------  Featured categories   ------>
+<div class="categories">
+  <div class="small-container">
+    <div class="row-grid">
+      <div class="col-3">
+        <img src="{% static 'images/cat3.png' %}" />
+      </div>
+      <div class="col-3">
+        <img src="{% static 'images/cat2.png' %}" />
+      </div>
+      <div class="col-3">
+        <img src="{% static 'images/cat5.jpg' %}" />
+      </div>
+      <div class="col-3">
+        <img src="{% static 'images/cat1.png' %}" />
+      </div>
+    </div>
+  </div>
+</div>
+<!---------Featured categories end------------>
+
+<!------  Featured Products   ------>
+<div class="featured-product">
+  <div class="small-container">
+    <h2 class="title">Featured Games</h2>
+    <div class="grid-4">
+      {% if featured_game %}
+        {% for featuredGame in featured_game %}
+          <div class="col-4">
+            <div class="box">
+              <div class="box-image">
+                <a href="{% url 'game' featuredGame.id %}"
+                >
+                  <img class="game-image" src="{{ featuredGame.photo_icon_small.url }}"
+                  />
+                </a>
+                <ul class="icon">
+                  <li>
+                    <div>
+                      <span>
+                        <i class="fas fa-search"></i>
+                      </span>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="add-to-cart-btn">
+                      <span>
+                        <i class="fas fa-shopping-bag"></i>
+                      </span>
+                    </div>
+                  </li>
+                  <li>
+                    <div>
+                      <span>
+                        <i class="far fa-heart"></i>
+                      </span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <a href="{% url 'game' featuredGame.id %}">
+                <h4 class="game-title">{{ featuredGame.gameTitle }}</h4></a>
+                <div class="rating">
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                </div>
+                <div class="price">Rs. {{ featuredGame.price }}</div>
+                <a href="{% url 'game' featuredGame.id %}" class="cart-btn">Read More</a>
+            </div>
+            
+          </div>
+        {% endfor %}
+      {% else %}
+        <p>No Featured games</p>
+      {% endif %}
+
+    </div>
+  </div>
+
+  <div class="small-container">
+    <h2 class="title">Latest Games</h2>
+    <div class="grid-4">
+      {% if latest_game %}
+        {% for latestGame in latest_game %}
+          <div class="col-4">
+            <div class="box">
+              <div class="box-image">
+                <a href="{% url 'game' latestGame.id %}">
+                  <img class="game-image" src="{{ latestGame.photo_icon_small.url }}" />
+                </a>
+                <ul class="icon">
+                  <li>
+                    <div>
+                      <span>
+                        <i class="fas fa-search"></i>
+                      </span>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="add-to-cart-btn">
+                      <span>
+                        <i class="fas fa-shopping-bag"></i>
+                      </span>
+                    </div>
+                  </li>
+                  <li>
+                    <div>
+                      <span>
+                        <i class="far fa-heart"></i>
+                      </span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <a href="{% url 'game' latestGame.id %}">
+                <h4 class="game-title">{{ latestGame.gameTitle }}</h4>
+              </a>
+              <div class="rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+              </div>
+              <div class="price">Rs. {{ latestGame.price }}</div>
+              <a href="{% url 'game' latestGame.id %}" class="cart-btn">Read More</a>
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p>No Latest Games</p>
+      {% endif %}
+
+    </div>
+  </div>
+</div>
+<!------  Featured Products end   ------>
+<!------ Offer------- -->
+<div class="offer">
+  <div class="small-container">
+    <div class="row-flex">
+      <div class="col-2">
+        <img src="{% static 'images/GWT.png' %}" class="offer-img" />
+      </div>
+      <div class="col-2">
+        <p>Exclusively Avialable on GN</p>
+         <h1>GhostWire: Tokyo</h1>
+        <small>
+          Tokyo is overrun by deadly supernatural forces after 99% of the
+          city's population vanished. Use a powerful arsenal of spectral
+          abilities to fight the paranormal threat and unravel the mystery
+          behind the mass disappearance.
+          <p>THE UNKNOWN, DISCOVER THE TRUTH AND SAVE THE CITY.</p>
+        </small>
+        <a href="{% url 'games' %}" class="btn">Buy Now &#8594;</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!------ Offer end------- -->
+{% endblock %}

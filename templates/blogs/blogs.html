@@ -1,0 +1,65 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="blog-background">
+  <!-- header include -->
+  {% include 'partials/_navbar.html' %}
+  <!-- header include end -->
+  <div class="small-container">
+    <div class="blog-title">
+      <h1 class="text-center">GN Blogs</h1>
+      <p class="text-center">Enjoy the contents</p>
+    </div>
+    <a
+      {% if user.is_authenticated %}
+      href="{% url 'createBlog' %}"
+      {% else %}
+      href="{% url 'login' %}"
+      {% endif %}
+    >
+      <button class="submit-btn">
+        <i class="fas fa-plus"></i> Create Blogs
+      </button>
+    </a>
+    {% include 'partials/_alerts.html' %}
+    <div class="blog-row">
+      <div class="col-md-4">
+        {% if blogs %} 
+          {% for blog in blogs %}
+            <div class="single-blog">
+              <p class="blog-meta">By {{ blog.user_name }} <span>{{ blog.published_date }}</span></p>
+              <img src="{{ blog.blogImage.url }}" />
+              <h2>
+                <a href="{% url 'blog' blog.id %}"
+                  >{{ blog.blogTitle }}</a
+                >
+              </h2>
+              <p class="blog-text">
+                {{ blog.blogDescription | safe | truncatewords_html:30 }}
+              </p>
+              <div class="blog-footer-link">
+                <a href="{% url 'blog' blog.id %}" class="read-more-btn">Read More</a>
+                <span>
+                  <i class="fa fa-thumbs-o-up"></i>8 Likes,
+                  <i class="fa fa-comment-o"></i>5..
+                   
+                  <!-- {% if reviews %}
+                    {% for review in reviews %}
+                      {% if review.blog_id == blog.id %}
+                          <i class="fa fa-thumbs-o-up"></i>{{ review.rating|length }}
+                      {% endif %}
+                    {% endfor %}
+                  {% else %}
+                    <i class="fa fa-thumbs-o-up"></i> 0
+                  {% endif %} -->
+
+                </span>
+              </div>
+            </div>
+          {% endfor %} 
+        {% else %}
+        <p>No Blogs to Show ! Add Some Blogs</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

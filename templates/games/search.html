@@ -1,0 +1,43 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block content %}
+<div class="product-item">
+  {% include 'partials/_navbar.html' %}
+  <!-- Game content -->
+  <div class="game-container">
+    <div class="small-container">
+      <div class="games-head">
+        <h2>All Games</h2>
+        <form action="{% url 'search' %}" class="search-form">
+          <input type="text" name="keywords" value="{{ values.keywords }}">
+          <input type="submit" value="Search">
+        </form>
+      </div>
+      <div class="grid-4">
+        {% if games %} 
+        {% for game in games %}
+        <div class="col-4">
+          <a href="{% url 'game' game.id %}"
+            ><img src="{{ game.photo_icon_small.url }}"
+          /></a>
+          <a href="{% url 'game' game.id %}">
+            <h4>{{ game.gameTitle }}</h4></a>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+          </div>
+          <a href="{% url 'game' game.id %}" class="visit-button">Read More</a>
+        </div>
+        {% endfor %} {% else %}
+        <p>No Listing Availavle</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <!-- Game content end -->
+  
+</div>
+{% endblock %}
