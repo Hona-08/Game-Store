@@ -53,7 +53,7 @@ a {
 .showcase {
   background: radial-gradient(#fff, #0e0e0e);
   /* background-image: url(./Images/showcase_walpaper.png); */
-  background-image: url(./images/hero.jpg);
+  background-image: url(./images/1234.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -126,6 +126,7 @@ nav ul li a {
 .col-2 {
   flex-basis: 40%;
   min-width: 200px;
+  
 }
 .col-2 p {
   color: #bfbfbf;
@@ -210,9 +211,12 @@ nav ul li a {
 
 /* -----------  FEATURED GAME------------ */
 .featured-product {
-  background-image: url("images/black-hexagon.jpg");
+  background-image: url("images/wp.jpg");
+  max-width: 100%;
+  height: auto;
   padding: 50px 0px;
 }
+
 .title {
   text-align: center;
   margin: 0 auto 30px;
@@ -404,18 +408,18 @@ small {
 
 /* ----------------FOOTER STYLE------------------------ */
 .footer {
-  background: rgb(183 183 183);
+  background: rgb(0, 0, 0);
   color: #8a8a8a;
   font-size: 14px;
   padding: 60px 0 20px;
 }
 
 .footer p {
-  color: rgb(0, 0, 0);
+  color: white;
 }
 
 .footer h3 {
-  color: rgb(0, 0, 0);
+  color: white;
   margin-bottom: 20px;
 }
 
@@ -445,7 +449,7 @@ small {
 /* ---------------PRODUCT PAGE STYLE---------- */
 .product-item {
   /* background-image: url("images/ghost-1.jpg"); */
-  background: radial-gradient(rgb(22 29 51), rgb(43 33 33));
+  background-image: url("images/wp.jpg");
 }
 /* .game-container { */
 /* border: 1px solid #fff; */
@@ -509,7 +513,7 @@ select {
 
 /* ----------------GAME-DETAILS-STYLE--------------- */
 .game-details-container {
-  background: url("images/game/snowRunner-wallpaper.jpg") no-repeat;
+  background-image: url("images/wp.jpg");
   background-size: cover;
   padding-bottom: 1px !important;
 }
@@ -694,7 +698,8 @@ form a {
   padding-bottom: 55px;
 }
 .blog-background {
-  background: #000;
+  background-image: url("images/wp.jpg");
+ 
 }
 .blog-title {
   margin: auto;
@@ -969,7 +974,7 @@ input.delete-btn:hover {
 
 /* --------------CART-------------- */
 .cart-body {
-  background-color: #333;
+  background-image: url("images/wp.jpg");
   /* height: 100vh; */
 }
 .cart-container {

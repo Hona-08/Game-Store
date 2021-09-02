@@ -37,7 +37,7 @@
               </p>
               <div class="blog-footer-link">
                 <a href="{% url 'blog' blog.id %}" class="read-more-btn">Read More</a>
-                <span>
+                {% comment %} <span>
                   <i class="fa fa-thumbs-o-up"></i>8 Likes,
                   <i class="fa fa-comment-o"></i>5..
                    
@@ -51,7 +51,7 @@
                     <i class="fa fa-thumbs-o-up"></i> 0
                   {% endif %} -->
 
-                </span>
+                </span> {% endcomment %}
               </div>
             </div>
           {% endfor %} 

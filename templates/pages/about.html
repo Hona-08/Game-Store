@@ -1,3 +1,53 @@
+
+
 {% extends 'base.html' %} {% block content %}
-<h1>About Page</h1>
+
+<div class="showcase">
+    <!-- header -->
+    {% include 'partials/_navbar.html' %}
+    <!-- header end -->
+
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'about.css' %}" />
+
+    <!-- style -->
+
+<div class="about-section">
+  <h1>About Us </h1>
+  <br>
+  <p>Some text about who we are and what we do.</p>
+  <p>We are the team on Project Title: "Gaming Nepal".</p>
+</div>
+
+<br>
+<h2 style="text-align:center">Our Team</h2><br>
+<div class="row">
+  <div class="column">
+    <div class="card">
+     <p class="title">Member</p>
+      <img src="{% static 'images/cat1.png' %}" alt="Ram" style="width:50%">
+      <div class="container">
+        <h2>Ram Krishna Bakhati</h2>
+        <p>Works: Frontend, Backend and Reports.</p>
+        <p>ram@gmail.com</p>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card"> <p class="title">Member</p>
+     <img src="{% static 'images/cat1.png' %}" alt="Sujit" style="width:50%">
+      <div class="container">
+        <h2>Sujit Hona</h2>
+        <p>Works: Frontend, Backend and Reports.</p>
+        <p>sujit@gmail.com</p>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
 {% endblock %}
+

@@ -171,3 +171,16 @@ MEDIA_URL = '/media/'
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
+
+
+#statuc files (css, js, images)
+# for sednging email to gmail account
+
+STATIC_URL = '/static/'
+
+EMAIL_BACKEND = 'django.core.mail.backend.smtp.EmailBackend'
+EMAIL_HOST_USER = "gamestorenepal@gmail.com"
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 578
+EMAIL_USE_TLS = True
+EMAIL_HOST_PASSWORD = ""

@@ -4,7 +4,7 @@ const addToLocalStorageClicked = (e) => {
   const shopItem =
     button.parentElement.parentElement.parentElement.parentElement.parentElement
       .parentElement;
-     
+      console.log(shopTtem)
   const title = shopItem.getElementsByClassName("game-title")[0].innerText;
   const price = parseFloat(
     
@@ -20,7 +20,7 @@ const addToLocalStorageClicked = (e) => {
 let cartArr = [];
 
 let getCartItems = JSON.parse(localStorage.getItem("cartItems"));
-// console.log(getCartItems);
+console.log(getCartItems);
 if (getCartItems) {
   for (let i = 0; i < getCartItems.length; i++) {
     cartArr.push(getCartItems[i]);
@@ -35,7 +35,7 @@ function addItemToCart(title, price, imageSrc) {
   };
 
   const exitItem = cartArr.find((item) => item.title === title);
-  // console.log(exitItem);
+  console.log(exitItem);
 
   if (exitItem) {
     if (exitItem.title === title) {
