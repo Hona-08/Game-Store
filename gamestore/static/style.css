@@ -132,8 +132,14 @@ nav ul li a {
   color: #bfbfbf;
 }
 .col-2 img {
-  max-width: 100%;
-  /* padding: 50px 0; */
+  max-width: 100px;
+  justify-content: center;
+
+}
+
+.col-g img {
+  max-width: 80%;
+  justify-content: left;
 }
 
 .col-2 h1 {
@@ -143,7 +149,7 @@ nav ul li a {
   color: #b1b1b1;
 }
 .trending-post {
-  background-color: #000;
+  background-color: black;
   width: 335px;
   margin: auto;
 }
@@ -156,11 +162,11 @@ nav ul li a {
 }
 .trending-box {
   display: flex;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
 }
 .post-image img {
-  width: 230px;
-  height: 70px;
+  width: 300px;
+  height: 100px;
   object-fit: cover;
 }
 .item-content {
@@ -211,7 +217,7 @@ nav ul li a {
 
 /* -----------  FEATURED GAME------------ */
 .featured-product {
-  background-image: url("images/wp.jpg");
+  background-image: url("images/joy.jpg");
   max-width: 100%;
   height: auto;
   padding: 50px 0px;
@@ -1076,28 +1082,6 @@ button.checkout-btn {
 /* --------------CART END-------------- */
 
 /* 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 */

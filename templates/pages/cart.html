@@ -22,7 +22,17 @@
             SubTotal (<span id="subtotal">1</span>) Items
           </h2>
           <span class="totalPrice" id="totalPrice">Rs. </span>
-          <button class="checkout-btn">Proceed To Checkout</button>
+          <br>
+          <form
+              action="https://formspree.io/f/mzbyajvn"
+              method="POST">
+          <label>
+            Your email:
+              <input type="email" name="_replyto">
+          </label>
+                      <!-- your other form fields go here -->
+            <button class="checkout-btn">Proceed to Checkout</button>
+          </form>
         </div>
       </div>
     </div>
