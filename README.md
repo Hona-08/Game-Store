@@ -1,1 +1,1 @@
-# Game-Store Live : 
+# Game-Store using backend: Django
