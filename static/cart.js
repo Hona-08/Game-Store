@@ -90,6 +90,8 @@ const updateCartTotal = () => {
   }
   total = Math.round(total * 100) / 100;
   document.getElementsByClassName("totalPrice")[0].innerText = `Rs. ${total}`;
+  let email = document.getElementById("emailsend");
+  email.value = total
   const subtotal = document.getElementById("subtotal");
   subtotal.innerText = cartRows.length;
 };

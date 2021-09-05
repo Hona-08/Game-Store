@@ -197,7 +197,7 @@ nav ul li a {
 .categories {
   /* margin: 30px 0; */
   padding: 35px 0px;
-  background-color: rgb(3, 3, 3);
+  background-color: rgb(0, 0, 0);
 }
 .row-grid {
   display: grid;
@@ -320,7 +320,7 @@ nav ul li a {
 .grid-4 {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  /* grid-gap: 1rem; */
+  grid-gap: 1rem;
 }
 .price {
   color: #d8d8d8;
@@ -855,8 +855,8 @@ form a {
 /* ------------CREATE BLOG POST STYLE END------------- */
 /* ---------------USER DASHBOARD------------- */
 .dashboard-background {
-  background: url(images/dashboard.jpg);
-  background-size: cover;
+  /* background: url(images/dashboard.jpg); */
+  background-size: fit;
   background-repeat: no-repeat;
 }
 .dashboard {

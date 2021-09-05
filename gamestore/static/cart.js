@@ -93,7 +93,5 @@ const updateCartTotal = () => {
   let email = document.getElementById("emailsend");
   email.value = total
   const subtotal = document.getElementById("subtotal");
-  
-
   subtotal.innerText = cartRows.length;
 };
