@@ -5,12 +5,12 @@
   {% include 'partials/_navbar.html' %}
   <div class="dashboard">
     <div class="dashboard-showcase">
-      <img src="{% static 'images/dash.jpg' %}" alt="" />
+      {% comment %} <img src="{% static 'images/jo.jpg' %}" alt="" /> {% endcomment %}
       <div class="showcase-dashboard-content">
         <h1>{{ user.username }} Dashboard</h1>
         <p>Manage Blog and Account</p>
       </div>
-    </div>
+    </div><br><br><br><br>
     <div class="dashboard-container">
       <div class="navigation-header">
         <a href="{% url 'index' %}"> Home </a> / <span>Dashboard</span>
