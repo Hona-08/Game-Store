@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-9c^)4buoe)+p&(pyd1o)bqaiu9$f^w3a&sdv1_r#xt(66wkb#j
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', 'hona-gamestore.herokuapp.com']
 
 
 # Application definition
